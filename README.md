@@ -17,11 +17,17 @@ build được thành dylib iOS. File gốc trong `workspace/user/files/`
 - Đổi `main()` thành hàm constructor `__attribute__((constructor))`
   chạy khi dylib được nạp, vì dylib không dùng `main()`.
 
+## Menu UIKit
+
+Các hàm trong `GfxCore` vẫn là stub, không vẽ gì. Menu hiển thị
+được gắn thêm trong `ObscureMenu.mm`: nút nổi "O", kéo thả, chạm
+để mở/đóng panel, các công tắc và thanh trượt đổi đúng các trường
+trong `RenderContextState` (dùng chung qua `ObscureState.h`).
+
 ## Giới hạn
 
-Các hàm trong `GfxCore` chỉ là stub trả về `true`, không vẽ gì và
-không đổi gì trong game. File này không có offset, hook hay ghi nhớ.
-Build chỉ chứng minh code biên dịch được thành dylib arm64 iOS.
+Menu chỉ đổi giá trị trong struct. File này không có offset, hook
+hay ghi nhớ, không đổi gì trong game.
 
 ## Build
 

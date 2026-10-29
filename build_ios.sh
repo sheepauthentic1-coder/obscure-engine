@@ -3,8 +3,9 @@
 set -e
 cd "$(dirname "$0")"
 xcrun --sdk iphoneos clang++ -arch arm64 -miphoneos-version-min=14.0 \
-  -std=c++17 \
-  obscure_engine.cpp \
+  -std=c++17 -fobjc-arc -x objective-c++ \
+  obscure_engine.cpp ObscureMenu.mm \
+  -framework UIKit -framework Foundation -framework QuartzCore -framework CoreGraphics \
   -shared -o obscure_engine.dylib
 ls -lh obscure_engine.dylib
 file obscure_engine.dylib
